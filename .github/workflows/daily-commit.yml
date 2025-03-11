@@ -5,6 +5,9 @@ on:
     - cron: '0 0 * * *' # Her gün gece 12'de çalıştır
   workflow_dispatch: # Manuel olarak da çalıştırabilmek için
 
+permissions:
+  contents: write # GITHUB_TOKEN için yazma yetkisi verdik!
+
 jobs:
   update-log:
     runs-on: ubuntu-latest
