@@ -22,7 +22,7 @@ jobs:
       run: |
         echo "$(date) - Günlük otomatik commit" >> activity.log
 
-    - name: Değişiklikleri GitHub'a Gönder
+    - name: Değişiklikleri GitHuba Gönder
       env:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
