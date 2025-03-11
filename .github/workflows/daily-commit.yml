@@ -12,33 +12,12 @@ jobs:
     steps:
     - name: Depoyu Klonla
       uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Python Ortamını Kur
       uses: actions/setup-python@v4
       with:
         python-version: '3.x'
 
-    - name: Günlük Güncellemeyi Ekle
-      run: |
-        echo "$(date) - Günlük otomatik commit" >> activity.log
-
-    - name: Değişiklikleri GitHub'a Gönder
-      env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions@users.noreply.github.com"
-        
-        MESSAGES=("🚀 Everyday one commit for development!"
-                  "🔄 Automatic daily update has been made."
-                  "📆 Additional infos are added!"
-                  "✅ Updates v1.0.1 has been made!"
-                  "🔧 Daily maintenance."
-                  "📊 Achievements are loading"
-                  "💡 New repos are ready!")
-        
-        RANDOM_MSG=${MESSAGES[$RANDOM % ${#MESSAGES[@]}]}
-        
-        git add activity.log
-        git commit -m "$RANDOM_MSG"
-        git push https://${PAT_TOKEN}@github.com/${{ github.repository }}.git main
+    - name: Gün
