@@ -20,4 +20,27 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Gün
+    - name: Günlük Güncellemeyi Ekle
+      run: |
+        echo "$(date) - Günlük otomatik commit" >> activity.log
+
+    - name: Değişiklikleri GitHub'a Gönder
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions@users.noreply.github.com"
+        
+        MESSAGES=("🚀 Everyday one commit for development!"
+                  "🔄 Automatic daily update has been made."
+                  "📆 Additional infos are added!"
+                  "✅ Updates v1.0.1 has been made!"
+                  "🔧 Daily maintenance."
+                  "📊 Achievements are loading"
+                  "💡 New repos are ready!")
+
+        RANDOM_MSG=${MESSAGES[$RANDOM % ${#MESSAGES[@]}]}
+
+        git add activity.log
+        git commit -m "$RANDOM_MSG"
+        git push origin main
