@@ -16,28 +16,26 @@ jobs:
     - name: Python Ortamını Kur
       uses: actions/setup-python@v4
       with:
-       python-version: '3.x'
+        python-version: '3.x'
 
     - name: Günlük Güncellemeyi Ekle
       run: |
-       echo "$(date) - Günlük otomatik commit" >> activity.log
+        echo "$(date) - Günlük otomatik commit" >> activity.log
 
     - name: Değişiklikleri GitHub'a Gönder
       run: |
-       git config --global user.name "github-actions[bot]"
-       git config --global user.email "github-actions@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions@users.noreply.github.com"
         
-       COMMIT_MESSAGES=(
-          "🚀 Everyday one commit for development!"
-          "🔄 Automatic daily update has been made."
-          "📆 Additional infos are added!"
-          "✅ Updates v1.0.1 has been made!"
-          "🔧 Daily maintenance."
-          "📊 Achievements are loading"
-          "💡 New repos are ready!"
-        )
+        MESSAGES=("🚀 Everyday one commit for development!"
+                  "🔄 Automatic daily update has been made."
+                  "📆 Additional infos are added!"
+                  "✅ Updates v1.0.1 has been made!"
+                  "🔧 Daily maintenance."
+                  "📊 Achievements are loading"
+                  "💡 New repos are ready!")
         
-        RANDOM_MSG=${COMMIT_MESSAGES[$((RANDOM % 7))]}
+        RANDOM_MSG=${MESSAGES[$RANDOM % ${#MESSAGES[@]}]}
         
         git add activity.log
         git commit -m "$RANDOM_MSG"
