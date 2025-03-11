@@ -6,7 +6,7 @@ on:
   workflow_dispatch: 
 
 permissions:
-  contents: write # GITHUB_TOKEN için yazma yetkisi verdik!
+  contents: write 
 
 jobs:
   update-log:
