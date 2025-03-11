@@ -22,7 +22,7 @@ jobs:
       run: |
         echo "$(date) - Günlük otomatik commit" >> activity.log
 
-    - name: Değişiklikleri GitHuba Gönder
+    - name: Değişiklikleri GitHub'a Gönder
       env:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
@@ -41,4 +41,4 @@ jobs:
         
         git add activity.log
         git commit -m "$RANDOM_MSG"
-        git push https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }}.git main
+        git push https://${PAT_TOKEN}@github.com/${{ github.repository }}.git main
