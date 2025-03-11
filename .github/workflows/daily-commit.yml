@@ -1,9 +1,9 @@
-name: Daily Commit Bot
+name: Committing
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Her gün gece 12'de çalıştır
-  workflow_dispatch: # Manuel olarak da çalıştırabilmek için
+    - cron: '0 0 * * *' 
+  workflow_dispatch: 
 
 permissions:
   contents: write # GITHUB_TOKEN için yazma yetkisi verdik!
@@ -23,11 +23,11 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Günlük Güncellemeyi Ekle
+    - name: Daily Update has been made
       run: |
-        echo "$(date) - Günlük otomatik commit" >> activity.log
+        echo "$(date) - Daily activity" >> activity.log
 
-    - name: Değişiklikleri GitHub'a Gönder
+    - name: Send activities to GitHub'a Gönder
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
