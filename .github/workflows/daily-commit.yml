@@ -21,12 +21,16 @@ jobs:
     - name: Günlük Güncellemeyi Ekle
       run: |
         echo "$(date) - Günlük otomatik commit" >> activity.log
+
+
     - name: Değişiklikleri GitHub'a Gönder
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions@users.noreply.github.com"
         
        COMMIT_MESSAGES=(
+
+
           "🚀 Everyday one commit for development!"
           "🔄 Automatic daily update has been made."
           "📆 Additional infos are added!"
