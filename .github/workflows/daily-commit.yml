@@ -21,7 +21,6 @@ jobs:
     - name: Günlük Güncellemeyi Ekle
       run: |
         echo "$(date) - Günlük otomatik commit" >> activity.log
-
     - name: Değişiklikleri GitHub'a Gönder
       run: |
         git config --global user.name "github-actions[bot]"
