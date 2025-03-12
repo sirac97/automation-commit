@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Depoyu Klonla
+    - name: Clone the repo 
       uses: actions/checkout@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Python Ortamını Kur
+    - name: Set up the Python env 
       uses: actions/setup-python@v4
       with:
         python-version: '3.x'
